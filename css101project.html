@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<link rel="stylesheet" href=css1.css">
+</head>
+
+<style>
+.logo{
+  position:absolute;
+  top: 30px;0px;
+  left:40px;
+}
+.nav{
+  position:absolute;
+  top:40px;
+  right:30px;
+  font-size:30px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: dimgray;
+}
+.hero{
+  position:absolute;
+  top:110px;
+  left: 0px;
+  width:100%;
+  height:90vh; /* page ke hisaab se scale */
+  background:
+    linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)),
+    url("https://rocketman.learnwagtail.com/media/images/spacex-OHOU-5UVIYQ-unsplash.2e16d0ba.fill-1600x800.jpg")
+    center;
+}
+.hero img{display:none;}
+.hero>p{
+    position: absolute;
+    color: aliceblue;
+    font-size: 60px;
+    top: 15%;
+    left: 10%;
+}
+p.smalltext {
+    position: absolute;
+    color: aliceblue;
+    font-size: 30px;
+    top: 40%;
+    left: 10%;
+}
+.contact {
+    position: absolute;
+    top: 60%;
+    left: 10%;
+    font-size: 40px;
+    background: rgb(255, 255, 255);
+    padding: 10px 30px;
+    color: black;
+}
+</style>
+
+
+<body>
+<div class="logo">
+    <img src="https://rocketman.learnwagtail.com/static/images/logo.24c25970fb09.png" alt="">
+    
+</div>
+<div class="nav">
+    Services
+Contact
+Wagtail Course
+</div>
+<div class="hero">
+    <img src="https://rocketman.learnwagtail.com/media/images/spacex-OHOU-5UVIYQ-unsplash.2e16d0ba.fill-1600x800.jpg" alt="">
+<p>Supreme Rocket <br>Maintenance <br>
+<p class="smalltext">Your rocket is your $1,000,000,000 baby. We get that.</p>
+</p>
+</div>
+<div class="contact">
+    <a href="#" style="text-decoration:none; color: black;">contact us</a>
+</div>
+</body>
+</html>
