@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML & CSS Complete Cheatsheet</title>
+    <style>
+        /* PDF Styling */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8fafc;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header Styles */
+        .pdf-header {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 3px solid #3b82f6;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .pdf-header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .pdf-header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        /* Content Sections */
+        section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            border-left: 4px solid #3b82f6;
+        }
+        
+        section:hover {
+            transform: translateY(-2px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+        }
+        
+        h2 {
+            color: #1e40af;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #dbeafe;
+            font-size: 1.8em;
+        }
+        
+        h3 {
+            color: #1e3a8a;
+            margin: 25px 0 15px 0;
+            font-size: 1.4em;
+        }
+        
+        h4 {
+            color: #374151;
+            margin: 20px 0 10px 0;
+            font-size: 1.1em;
+        }
+        
+        /* Code Blocks */
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .code-block code {
+            color: #7dd3fc;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+        
+        .code-comment {
+            color: #94a3b8;
+        }
+        
+        .code-tag {
+            color: #f472b6;
+        }
+        
+        .code-attr {
+            color: #7dd3fc;
+        }
+        
+        .code-value {
+            color: #86efac;
+        }
+        
+        /* Tables */
+        .cheatsheet-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95em;
+        }
+        
+        .cheatsheet-table th {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+            border: 1px solid #bfdbfe;
+        }
+        
+        .cheatsheet-table td {
+            padding: 12px 15px;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .cheatsheet-table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+        
+        .cheatsheet-table tr:hover {
+            background: #eff6ff;
+        }
+        
+        /* Quick Tips */
+        .tip-box {
+            background: #dbeafe;
+            border-left: 4px solid #3b82f6;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .warning-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        /* Color Palette */
+        .color-palette {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .color-item {
+            width: 50px;
+            height: 50px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8em;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        /* Responsive */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            section {
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+                page-break-inside: avoid;
+            }
+            
+            .no-print {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .pdf-header {
+                padding: 20px 0;
+            }
+            
+            .pdf-header h1 {
+                font-size: 2em;
+            }
+            
+            section {
+                padding: 20px;
+            }
+            
+            .cheatsheet-table {
+                font-size: 0.85em;
+            }
+        }
+        
+        /* Footer */
+        .pdf-footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+            border-top: 2px solid #e5e7eb;
+            color: #6b7280;
+            font-size: 0.9em;
+        }
+        
+        /* Index */
+        .index {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .index-item {
+            background: #f8fafc;
+            padding: 10px 15px;
+            border-radius: 6px;
+            border-left: 3px solid #3b82f6;
+        }
+        
+        .index-item a {
+            color: #1e40af;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .index-item a:hover {
+            color: #3b82f6;
+        }
+        
+        /* Download Button */
+        .download-btn {
+            display: inline-block;
+            background: #3b82f6;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 10px 0;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .download-btn:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="pdf-header">
+        <h1>📘 HTML & CSS COMPLETE CHEATSHEET</h1>
+        <div class="subtitle">Ultimate Reference Guide for Web Developers</div>
+        <div style="margin-top: 20px;">
+            <button class="download-btn no-print" onclick="window.print()">📄 Print/Download PDF</button>
+        </div>
+    </header>
+
+    <!-- Quick Index -->
+    <section>
+        <h2>📑 Quick Index</h2>
+        <div class="index">
+            <div class="index-item"><a href="#html-basics">HTML Basics</a></div>
+            <div class="index-item"><a href="#text-elements">Text Elements</a></div>
+            <div class="index-item"><a href="#links-images">Links & Images</a></div>
+            <div class="index-item"><a href="#tables">HTML Tables</a></div>
+            <div class="index-item"><a href="#forms">HTML Forms</a></div>
+            <div class="index-item"><a href="#semantic">Semantic HTML</a></div>
+            <div class="index-item"><a href="#css-basics">CSS Basics</a></div>
+            <div class="index-item"><a href="#selectors">CSS Selectors</a></div>
+            <div class="index-item"><a href="#box-model">Box Model</a></div>
+            <div class="index-item"><a href="#flexbox">Flexbox</a></div>
+            <div class="index-item"><a href="#grid">CSS Grid</a></div>
+            <div class="index-item"><a href="#responsive">Responsive Design</a></div>
+        </div>
+    </section>
+
+    <!-- HTML SECTION -->
+    <section id="html-basics">
+        <h2>📄 HTML - STRUCTURE & CONTENT</h2>
+        
+        <h3>HTML Document Structure</h3>
+        <div class="code-block">
+<code><span class="code-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="code-tag">&lt;html</span> <span class="code-attr">lang</span>=<span class="code-value">"en"</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;head&gt;</span>
+    <span class="code-comment">&lt;!-- Meta tags --&gt;</span>
+    <span class="code-tag">&lt;meta</span> <span class="code-attr">charset</span>=<span class="code-value">"UTF-8"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;meta</span> <span class="code-attr">name</span>=<span class="code-value">"viewport"</span> <span class="code-attr">content</span>=<span class="code-value">"width=device-width, initial-scale=1.0"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;title&gt;</span>Page Title<span class="code-tag">&lt;/title&gt;</span>
+    <span class="code-comment">&lt;!-- External CSS --&gt;</span>
+    <span class="code-tag">&lt;link</span> <span class="code-attr">rel</span>=<span class="code-value">"stylesheet"</span> <span class="code-attr">href</span>=<span class="code-value">"styles.css"</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;/head&gt;</span>
+<span class="code-tag">&lt;body&gt;</span>
+    <span class="code-comment">&lt;!-- Content goes here --&gt;</span>
+    <span class="code-comment">&lt;!-- JavaScript --&gt;</span>
+    <span class="code-tag">&lt;script</span> <span class="code-attr">src</span>=<span class="code-value">"script.js"</span><span class="code-tag">&gt;&lt;/script&gt;</span>
+<span class="code-tag">&lt;/body&gt;</span>
+<span class="code-tag">&lt;/html&gt;</span></code>
+        </div>
+    </section>
+
+    <section id="text-elements">
+        <h3>Text Elements & Formatting</h3>
+        
+        <table class="cheatsheet-table">
+            <thead>
+                <tr>
+                    <th>Element</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>&lt;h1&gt; to &lt;h6&gt;</code></td>
+                    <td>Headings (h1 largest)</td>
+                    <td><code>&lt;h1&gt;Main Title&lt;/h1&gt;</code></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;p&gt;</code></td>
+                    <td>Paragraph</td>
+                    <td><code>&lt;p&gt;Text here&lt;/p&gt;</code></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;strong&gt;</code></td>
+                    <td><strong>Important text</strong></td>
+                    <td><code>&lt;strong&gt;Important!&lt;/strong&gt;</code></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;em&gt;</code></td>
+                    <td><em>Emphasized text</em></td>
+                    <td><code>&lt;em&gt;Emphasis&lt;/em&gt;</code></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;mark&gt;</code></td>
+                    <td><mark>Highlighted text</mark></td>
+                    <td><code>&lt;mark&gt;Highlight&lt;/mark&gt;</code></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;code&gt;</code></td>
+                    <td><code>Inline code</code></td>
+                    <td><code>&lt;code&gt;console.log()&lt;/code&gt;</code></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;br&gt;</code></td>
+                    <td>Line break</td>
+                    <td><code>Line1&lt;br&gt;Line2</code></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;hr&gt;</code></td>
+                    <td>Horizontal rule</td>
+                    <td><code>&lt;hr&gt;</code></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="links-images">
+        <h3>Links & Images</h3>
+        
+        <div class="code-block">
+<code><span class="code-comment">&lt;!-- Basic Link --&gt;</span>
+<span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"https://example.com"</span><span class="code-tag">&gt;</span>Visit Example<span class="code-tag">&lt;/a&gt;</span>
+
+<span class="code-comment">&lt;!-- Open in New Tab --&gt;</span>
+<span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-value">"page.html"</span> <span class="code-attr">target</span>=<span class="code-value">"_blank"</span><span class="code-tag">&gt;</span>New Tab<span class="code-tag">&lt;/a&gt;</span>
+
+<span class="code-comment">&lt;!-- Image --&gt;</span>
+<span class="code-tag">&lt;img</span> <span class="code-attr">src</span>=<span class="code-value">"image.jpg"</span> <span class="code-attr">alt</span>=<span class="code-value">"Description"</span> <span class="code-attr">width</span>=<span class="code-value">"300"</span><span class="code-tag">&gt;</span>
+
+<span class="code-comment">&lt;!-- Responsive Image --&gt;</span>
+<span class="code-tag">&lt;img</span> <span class="code-attr">src</span>=<span class="code-value">"image.jpg"</span> <span class="code-attr">alt</span>=<span class="code-value">"Desc"</span> 
+     <span class="code-attr">style</span>=<span class="code-value">"max-width:100%; height:auto;"</span><span class="code-tag">&gt;</span></code>
+        </div>
+    </section>
+
+    <section id="tables">
+        <h3>HTML Tables</h3>
+        
+        <div class="code-block">
+<code><span class="code-tag">&lt;table</span> <span class="code-attr">border</span>=<span class="code-value">"1"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;caption&gt;</span>Table Title<span class="code-tag">&lt;/caption&gt;</span>
+    <span class="code-tag">&lt;thead&gt;</span>
+        <span class="code-tag">&lt;tr&gt;</span>
+            <span class="code-tag">&lt;th&gt;</span>Header 1<span class="code-tag">&lt;/th&gt;</span>
+            <span class="code-tag">&lt;th&gt;</span>Header 2<span class="code-tag">&lt;/th&gt;</span>
+        <span class="code-tag">&lt;/tr&gt;</span>
+    <span class="code-tag">&lt;/thead&gt;</span>
+    <span class="code-tag">&lt;tbody&gt;</span>
+        <span class="code-tag">&lt;tr&gt;</span>
+            <span class="code-tag">&lt;td&gt;</span>Row 1, Cell 1<span class="code-tag">&lt;/td&gt;</span>
+            <span class="code-tag">&lt;td&gt;</span>Row 1, Cell 2<span class="code-tag">&lt;/td&gt;</span>
+        <span class="code-tag">&lt;/tr&gt;</span>
+        <span class="code-tag">&lt;tr&gt;</span>
+            <span class="code-tag">&lt;td</span> <span class="code-attr">colspan</span>=<span class="code-value">"2"</span><span class="code-tag">&gt;</span>Merged Cells<span class="code-tag">&lt;/td&gt;</span>
+        <span class="code-tag">&lt;/tr&gt;</span>
+    <span class="code-tag">&lt;/tbody&gt;</span>
+<span class="code-tag">&lt;/table&gt;</span></code>
+        </div>
+    </section>
+
+    <section id="forms">
+        <h3>HTML Forms</h3>
+        
+        <div class="code-block">
+<code><span class="code-tag">&lt;form</span> <span class="code-attr">action</span>=<span class="code-value">"/submit"</span> <span class="code-attr">method</span>=<span class="code-value">"POST"</span><span class="code-tag">&gt;</span>
+    
+    <span class="code-tag">&lt;label</span> <span class="code-attr">for</span>=<span class="code-value">"name"</span><span class="code-tag">&gt;</span>Name:<span class="code-tag">&lt;/label&gt;</span>
+    <span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-value">"text"</span> <span class="code-attr">id</span>=<span class="code-value">"name"</span> <span class="code-attr">name</span>=<span class="code-value">"name"</span> <span class="code-attr">required</span><span class="code-tag">&gt;</span>
+    
+    <span class="code-tag">&lt;label</span> <span class="code-attr">for</span>=<span class="code-value">"email"</span><span class="code-tag">&gt;</span>Email:<span class="code-tag">&lt;/label&gt;</span>
+    <span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-value">"email"</span> <span class="code-attr">id</span>=<span class="code-value">"email"</span> <span class="code-attr">name</span>=<span class="code-value">"email"</span><span class="code-tag">&gt;</span>
+    
+    <span class="code-tag">&lt;select</span> <span class="code-attr">id</span>=<span class="code-value">"country"</span> <span class="code-attr">name</span>=<span class="code-value">"country"</span><span class="code-tag">&gt;</span>
+        <span class="code-tag">&lt;option</span> <span class="code-attr">value</span>=<span class="code-value">"us"</span><span class="code-tag">&gt;</span>USA<span class="code-tag">&lt;/option&gt;</span>
+        <span class="code-tag">&lt;option</span> <span class="code-attr">value</span>=<span class="code-value">"uk"</span><span class="code-tag">&gt;</span>UK<span class="code-tag">&lt;/option&gt;</span>
+    <span class="code-tag">&lt;/select&gt;</span>
+    
+    <span class="code-tag">&lt;textarea</span> <span class="code-attr">id</span>=<span class="code-value">"message"</span> <span class="code-attr">name</span>=<span class="code-value">"message"</span> <span class="code-attr">rows</span>=<span class="code-value">"4"</span><span class="code-tag">&gt;</span><span class="code-tag">&lt;/textarea&gt;</span>
+    
+    <span class="code-tag">&lt;button</span> <span class="code-attr">type</span>=<span class="code-value">"submit"</span><span class="code-tag">&gt;</span>Submit<span class="code-tag">&lt;/button&gt;</span>
+    
+<span class="code-tag">&lt;/form&gt;</span></code>
+        </div>
+    </section>
+
+    <section id="semantic">
+        <h3>Semantic HTML5 Elements</h3>
+        
+        <div class="code-block">
+<code><span class="code-tag">&lt;header&gt;</span>Website header<span class="code-tag">&lt;/header&gt;</span>
+<span class="code-tag">&lt;nav&gt;</span>Navigation<span class="code-tag">&lt;/nav&gt;</span>
+<span class="code-tag">&lt;main&gt;</span>
+    <span class="code-tag">&lt;article&gt;</span>
+        <span class="code-tag">&lt;section&gt;</span>Content section<span class="code-tag">&lt;/section&gt;</span>
+    <span class="code-tag">&lt;/article&gt;</span>
+    <span class="code-tag">&lt;aside&gt;</span>Sidebar<span class="code-tag">&lt;/aside&gt;</span>
+<span class="code-tag">&lt;/main&gt;</span>
+<span class="code-tag">&lt;footer&gt;</span>Footer<span class="code-tag">&lt;/footer&gt;</span></code>
+        </div>
+    </section>
+
+    <!-- CSS SECTION -->
+    <section id="css-basics">
+        <h2>🎨 CSS - STYLING & LAYOUT</h2>
+        
+        <h3>CSS Syntax & Ways to Add CSS</h3>
+        
+        <div class="code-block">
+<code><span class="code-comment">/* CSS Syntax */</span>
+<span class="code-selector">selector</span> {
+    <span class="code-property">property</span>: <span class="code-value">value</span>;
+}
+
+<span class="code-comment">/* Inline CSS */</span>
+<span class="code-tag">&lt;p</span> <span class="code-attr">style</span>=<span class="code-value">"color: red;"</span><span class="code-tag">&gt;</span>Text<span class="code-tag">&lt;/p&gt;</span>
+
+<span class="code-comment">/* Internal CSS */</span>
+<span class="code-tag">&lt;style&gt;</span>
+    p { color: blue; }
+<span class="code-tag">&lt;/style&gt;</span>
+
+<span class="code-comment">/* External CSS */</span>
+<span class="code-tag">&lt;link</span> <span class="code-attr">rel</span>=<span class="code-value">"stylesheet"</span> <span class="code-attr">href</span>=<span class="code-value">"styles.css"</span><span class="code-tag">&gt;</span></code>
+        </div>
+    </section>
+
+    <section id="selectors">
+        <h3>CSS Selectors</h3>
+        
+        <table class="cheatsheet-table">
+            <thead>
+                <tr>
+                    <th>Selector</th>
+                    <th>Example</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Element</td>
+                    <td><code>p</code></td>
+                    <td>All &lt;p&gt; elements</td>
+                </tr>
+                <tr>
+                    <td>Class</td>
+                    <td><code>.classname</code></td>
+                    <td>Elements with class="classname"</td>
+                </tr>
+                <tr>
+                    <td>ID</td>
+                    <td><code>#idname</code></td>
+                    <td>Element with id="idname"</td>
+                </tr>
+                <tr>
+                    <td>Universal</td>
+                    <td><code>*</code></td>
+                    <td>All elements</td>
+                </tr>
+                <tr>
+                    <td>Descendant</td>
+                    <td><code>div p</code></td>
+                    <td>&lt;p&gt; inside &lt;div&gt;</td>
+                </tr>
+                <tr>
+                    <td>Child</td>
+                    <td><code>div > p</code></td>
+                    <td>&lt;p&gt; direct child of &lt;div&gt;</td>
+                </tr>
+                <tr>
+                    <td>Attribute</td>
+                    <td><code>[type="text"]</code></td>
+                    <td>Elements with attribute</td>
+                </tr>
+                <tr>
+                    <td>Pseudo-class</td>
+                    <td><code>a:hover</code></td>
+                    <td>Links on mouse hover</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="box-model">
+        <h3>Box Model & Common Properties</h3>
+        
+        <div class="code-block">
+<code><span class="code-selector">.element</span> {
+    <span class="code-comment">/* Box Model */</span>
+    <span class="code-property">width</span>: <span class="code-value">300px</span>;
+    <span class="code-property">height</span>: <span class="code-value">200px</span>;
+    <span class="code-property">padding</span>: <span class="code-value">20px</span>;      <span class="code-comment">/* Inside spacing */</span>
+    <span class="code-property">margin</span>: <span class="code-value">10px</span>;       <span class="code-comment">/* Outside spacing */</span>
+    <span class="code-property">border</span>: <span class="code-value">2px solid #000</span>;
+    <span class="code-property">box-sizing</span>: <span class="code-value">border-box</span>;
+    
+    <span class="code-comment">/* Colors & Background */</span>
+    <span class="code-property">color</span>: <span class="code-value">#333</span>;
+    <span class="code-property">background-color</span>: <span class="code-value">#f0f0f0</span>;
+    <span class="code-property">background</span>: <span class="code-value">linear-gradient(to right, red, blue)</span>;
+    
+    <span class="code-comment">/* Text */</span>
+    <span class="code-property">font-family</span>: <span class="code-value">Arial, sans-serif</span>;
+    <span class="code-property">font-size</span>: <span class="code-value">16px</span>;
+    <span class="code-property">text-align</span>: <span class="code-value">center</span>;
+    <span class="code-property">line-height</span>: <span class="code-value">1.5</span>;
+    
+    <span class="code-comment">/* Positioning */</span>
+    <span class="code-property">display</span>: <span class="code-value">block</span>;        <span class="code-comment">/* block, inline, flex, grid */</span>
+    <span class="code-property">position</span>: <span class="code-value">relative</span>;    <span class="code-comment">/* static, relative, absolute, fixed */</span>
+    <span class="code-property">float</span>: <span class="code-value">left</span>;          <span class="code-comment">/* left, right, none */</span>
+}</code>
+        </div>
+        
+        <div class="tip-box">
+            💡 <strong>Tip:</strong> Use <code>box-sizing: border-box</code> to include padding and border in element's total width/height.
+        </div>
+    </section>
+
+    <section id="flexbox">
+        <h3>Flexbox Layout</h3>
+        
+        <div class="code-block">
+<code><span class="code-comment">/* Container Properties */</span>
+<span class="code-selector">.container</span> {
+    <span class="code-property">display</span>: <span class="code-value">flex</span>;
+    <span class="code-property">flex-direction</span>: <span class="code-value">row</span>;         <span class="code-comment">/* row, column, row-reverse */</span>
+    <span class="code-property">justify-content</span>: <span class="code-value">center</span>;    <span class="code-comment">/* main axis alignment */</span>
+    <span class="code-property">align-items</span>: <span class="code-value">center</span>;       <span class="code-comment">/* cross axis alignment */</span>
+    <span class="code-property">flex-wrap</span>: <span class="code-value">wrap</span>;          <span class="code-comment">/* wrap, nowrap, wrap-reverse */</span>
+    <span class="code-property">gap</span>: <span class="code-value">10px</span>;              <span class="code-comment">/* space between items */</span>
+}
+
+<span class="code-comment">/* Item Properties */</span>
+<span class="code-selector">.item</span> {
+    <span class="code-property">flex</span>: <span class="code-value">1</span>;                <span class="code-comment">/* grow shrink basis */</span>
+    <span class="code-property">order</span>: <span class="code-value">2</span>;               <span class="code-comment">/* change display order */</span>
+    <span class="code-property">align-self</span>: <span class="code-value">flex-start</span>;  <span class="code-comment">/* self alignment */</span>
+}</code>
+        </div>
+    </section>
+
+    <section id="grid">
+        <h3>CSS Grid Layout</h3>
+        
+        <div class="code-block">
+<code><span class="code-selector">.container</span> {
+    <span class="code-property">display</span>: <span class="code-value">grid</span>;
+    <span class="code-property">grid-template-columns</span>: <span class="code-value">1fr 2fr 1fr</span>;
+    <span class="code-property">grid-template-rows</span>: <span class="code-value">auto 1fr auto</span>;
+    <span class="code-property">gap</span>: <span class="code-value">20px</span>;
+    <span class="code-property">grid-template-areas</span>:
+        <span class="code-value">"header header header"</span>
+        <span class="code-value">"sidebar main main"</span>
+        <span class="code-value">"footer footer footer"</span>;
+}
+
+<span class="code-selector">.header</span> { <span class="code-property">grid-area</span>: <span class="code-value">header</span>; }
+<span class="code-selector">.sidebar</span> { <span class="code-property">grid-area</span>: <span class="code-value">sidebar</span>; }
+<span class="code-selector">.main</span> { <span class="code-property">grid-area</span>: <span class="code-value">main</span>; }
+
+<span class="code-comment">/* Item Placement */</span>
+<span class="code-selector">.item</span> {
+    <span class="code-property">grid-column</span>: <span class="code-value">1 / 3</span>;      <span class="code-comment">/* start at line 1, end at line 3 */</span>
+    <span class="code-property">grid-row</span>: <span class="code-value">2</span>;             <span class="code-comment">/* row 2 */</span>
+    <span class="code-property">grid-column</span>: <span class="code-value">span 2</span>;      <span class="code-comment">/* span 2 columns */</span>
+}</code>
+        </div>
+    </section>
+
+    <section id="responsive">
+        <h3>Responsive Design & Media Queries</h3>
+        
+        <div class="code-block">
+<code><span class="code-comment">/* Viewport Meta Tag (HTML) */</span>
+<span class="code-tag">&lt;meta</span> <span class="code-attr">name</span>=<span class="code-value">"viewport"</span> <span class="code-attr">content</span>=<span class="code-value">"width=device-width, initial-scale=1.0"</span><span class="code-tag">&gt;</span>
+
+<span class="code-comment">/* Media Queries */</span>
+<span class="code-at-rule">@media</span> <span class="code-value">screen and (max-width: 768px)</span> {
+    <span class="code-selector">.container</span> {
+        <span class="code-property">flex-direction</span>: <span class="code-value">column</span>;
+    }
+    <span class="code-selector">h1</span> {
+        <span class="code-property">font-size</span>: <span class="code-value">1.5rem</span>;
+    }
+}
+
+<span class="code-comment">/* Common Breakpoints */</span>
+<span class="code-comment">/* Mobile: max-width: 480px */</span>
+<span class="code-comment">/* Tablet: 481px - 768px */</span>
+<span class="code-comment">/* Laptop: 769px - 1024px */</span>
+<span class="code-comment">/* Desktop: 1025px+ */</span></code>
+        </div>
+        
+        <div class="warning-box">
+            ⚠️ <strong>Important:</strong> Always use mobile-first approach. Start with mobile styles, then add media queries for larger screens.
+        </div>
+    </section>
+
+    <!-- QUICK REFERENCE -->
+    <section>
+        <h2>🚀 QUICK REFERENCE</h2>
+        
+        <h3>Common Color Values</h3>
+        <div class="color-palette">
+            <div class="color-item" style="background: #3b82f6;">#3b82f6</div>
+            <div class="color-item" style="background: #10b981;">#10b981</div>
+            <div class="color-item" style="background: #f59e0b;">#f59e0b</div>
+            <div class="color-item" style="background: #ef4444;">#ef4444</div>
+            <div class="color-item" style="background: #8b5cf6;">#8b5cf6</div>
+        </div>
+        
+        <h3>CSS Units</h3>
+        <table class="cheatsheet-table">
+            <tr><td><code>px</code></td><td>Pixels (absolute)</td></tr>
+            <tr><td><code>%</code></td><td>Percentage of parent</td></tr>
+            <tr><td><code>em</code></td><td>Relative to parent font-size</td></tr>
+            <tr><td><code>rem</code></td><td>Relative to root font-size</td></tr>
+            <tr><td><code>vw/vh</code></td><td>Viewport width/height</td></tr>
+            <tr><td><code>vmin/vmax</code></td><td>Viewport min/max dimension</td></tr>
+        </table>
+        
+        <h3>HTML Entities</h3>
+        <table class="cheatsheet-table">
+            <tr><td><code>&amp;lt;</code></td><td>&lt; (Less than)</td></tr>
+            <tr><td><code>&amp;gt;</code></td><td>&gt; (Greater than)</td></tr>
+            <tr><td><code>&amp;amp;</code></td><td>&amp; (Ampersand)</td></tr>
+            <tr><td><code>&amp;copy;</code></td><td>© (Copyright)</td></tr>
+            <tr><td><code>&amp;nbsp;</code></td><td> (Non-breaking space)</td></tr>
+        </table>
+    </section>
+
+    <!-- Footer -->
+    <footer class="pdf-footer">
+        <p>📘 <strong>HTML & CSS Complete Cheatsheet</strong></p>
+        <p>Last Updated: January 2024 | Made for Web Developers</p>
+        <p style="margin-top: 10px;">
+            <button class="download-btn no-print" onclick="window.print()">📄 Print/Download PDF</button>
+        </p>
+    </footer>
+
+    <script>
+        // Smooth scroll for index links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Print functionality
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'p') {
+                e.preventDefault();
+                window.print();
+            }
+        });
+    </script>
+</body>
+</html>
