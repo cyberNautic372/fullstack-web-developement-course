@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>iPod-Style Neumorphic Audio Player</title>
+<style>
+:root{
+  --bg:#e0e0e0;
+  --light:#ffffff;
+  --dark:#b8b8b8;
+  --accent:#ff4d6d;
+  --text:#333;
+}
+
+/* dark mode toggle (manual edit) */
+body.dark{
+  --bg:#1e1e1e;
+  --light:#2a2a2a;
+  --dark:#121212;
+  --text:#eee;
+}
+
+*{
+  box-sizing:border-box;
+  font-family:system-ui, sans-serif;
+}
+
+body{
+  margin:0;
+  height:100vh;
+  background:var(--bg);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--text);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* ===== iPod FRAME ===== */
+.ipod-frame {
+  width: 400px;
+  height: 680px;
+  background: #1a1a1a;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+  position: relative;
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 12px solid #000;
+}
+
+/* iPod screen bezel */
+.ipod-screen {
+  width: 320px;
+  height: 240px;
+  background: #000;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 60px;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #333;
+}
+
+/* Screen glass effect */
+.ipod-screen::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(255,255,255,0.05) 0%,
+    rgba(255,255,255,0) 20%);
+  pointer-events: none;
+}
+
+/* ===== PLAYER ===== */
+.player{
+  width:280px;
+  padding:25px;
+  border-radius:12px;
+  background:var(--bg);
+  box-shadow:
+    6px 6px 12px var(--dark),
+   -6px -6px 12px var(--light);
+}
+
+/* ===== TITLE ===== */
+.title{
+  text-align:center;
+  font-weight:600;
+  margin-bottom:25px;
+  font-size: 1.2rem;
+}
+
+/* ===== BUTTON ===== */
+.btn{
+  width:70px;
+  height:70px;
+  margin:0 auto 25px;
+  border-radius:50%;
+  background:var(--bg);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:
+    5px 5px 10px var(--dark),
+   -5px -5px 10px var(--light);
+  cursor:pointer;
+  transition: all 0.1s ease;
+}
+
+.btn:active{
+  box-shadow:
+    inset 4px 4px 8px var(--dark),
+    inset -4px -4px 8px var(--light);
+  transform: scale(0.98);
+}
+
+/* play icon */
+.btn::before{
+  content:"▶";
+  font-size:24px;
+  margin-left:3px;
+  color:var(--accent);
+}
+
+/* ===== PROGRESS ===== */
+.progress{
+  height:8px;
+  border-radius:4px;
+  background:var(--bg);
+  box-shadow:
+    inset 2px 2px 4px var(--dark),
+    inset -2px -2px 4px var(--light);
+  margin-bottom:18px;
+  overflow:hidden;
+}
+
+.progress span{
+  display:block;
+  height:100%;
+  width:60%;
+  background:linear-gradient(90deg,var(--accent),#ff7a90);
+  border-radius: 4px;
+}
+
+/* ===== CONTROLS ===== */
+.controls{
+  display:flex;
+  justify-content:space-between;
+  padding: 0 15px;
+}
+
+.small-btn{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:var(--bg);
+  box-shadow:
+    4px 4px 8px var(--dark),
+   -4px -4px 8px var(--light);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition: all 0.1s ease;
+  color: #666;
+  font-size: 14px;
+}
+
+.small-btn:active{
+  box-shadow:
+    inset 3px 3px 6px var(--dark),
+    inset -3px -3px 6px var(--light);
+  transform: scale(0.95);
+}
+
+.small-btn::before{
+  content:"⏮";
+}
+
+.small-btn:last-child::before{
+  content:"⏭";
+}
+
+/* iPod click wheel */
+.ipod-wheel {
+  width: 280px;
+  height: 280px;
+  background: #2a2a2a;
+  border-radius: 50%;
+  position: relative;
+  box-shadow:
+    0 8px 16px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  border: 1px solid #000;
+  margin-top: 10px;
+}
+
+/* Wheel inner rings */
+.wheel-inner {
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  top: 20px;
+  left: 20px;
+  background: #222;
+  box-shadow: 
+    inset 0 4px 8px rgba(0, 0, 0, 0.8);
+}
+
+/* Wheel center button */
+.wheel-center {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  top: 100px;
+  left: 100px;
+  background: #333;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.wheel-center:active {
+  background: #2a2a2a;
+  transform: scale(0.98);
+}
+
+.wheel-center::before {
+  content: "●";
+  font-size: 20px;
+}
+
+/* Wheel control labels */
+.wheel-menu, .wheel-play, .wheel-prev, .wheel-next {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  letter-spacing: 1px;
+}
+
+.wheel-menu { 
+  top: 40px; 
+  left: 50%; 
+  transform: translateX(-50%);
+  font-weight: 600;
+}
+
+.wheel-play { 
+  bottom: 40px; 
+  left: 50%; 
+  transform: translateX(-50%);
+  font-weight: 600;
+}
+
+.wheel-prev { 
+  top: 50%; 
+  left: 40px; 
+  transform: translateY(-50%);
+  font-size: 16px;
+}
+
+.wheel-next { 
+  top: 50%; 
+  right: 40px; 
+  transform: translateY(-50%);
+  font-size: 16px;
+}
+
+/* iPod footer text */
+.ipod-footer {
+  position: absolute;
+  bottom: 15px;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+
+/* Screen song info (added for realism) */
+.song-info {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.song-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 5px;
+}
+
+.song-artist {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .ipod-frame {
+    transform: scale(0.85);
+  }
+}
+</style>
+</head>
+<body class="dark">
+
+<div class="ipod-frame">
+  <!-- iPod Screen -->
+  <div class="ipod-screen">
+    <div class="song-info">
+      <div class="song-title"> </div>
+      <br>
+      <div class="song-artist">M</div>
+    </div>
+    
+    <div class="player">
+      <div class="title">Now Playing</div>
+      
+      <div class="btn"></div>
+      
+      <div class="progress">
+        <span></span>
+      </div>
+      
+      <div class="controls">
+        <div class="small-btn"></div>
+        <div class="small-btn"></div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- iPod Click Wheel -->
+  <div class="ipod-wheel">
+    <div class="wheel-inner"></div>
+    <div class="wheel-center"></div>
+    <div class="wheel-menu">MENU</div>
+    <div class="wheel-play">PLAY</div>
+    <div class="wheel-prev">◀◀</div>
+    <div class="wheel-next">▶▶</div>
+  </div>
+  
+  <div class="ipod-footer">iPod</div>
+</div>
+
+</body>
+</html>
