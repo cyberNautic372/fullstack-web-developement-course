@@ -440,6 +440,30 @@
             }
         }
         
+        /* Altitude Display - FIXED */
+        .altitude-display {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 10px;
+            padding: 12px;
+            background: rgba(0, 20, 40, 0.5);
+            border-radius: 8px;
+            border-left: 3px solid var(--cyber-orange);
+        }
+        
+        .altitude-value {
+            font-size: 20px;
+            font-weight: bold;
+            color: #0ff;
+        }
+        
+        .altitude-unit {
+            font-size: 11px;
+            color: #aaa;
+            text-transform: uppercase;
+        }
+        
         /* Additional Weather Metrics */
         .metrics-grid {
             display: grid;
@@ -493,17 +517,6 @@
             background: linear-gradient(135deg, #ddd, #aaa);
             border-radius: 50%;
             transition: width 1s ease;
-        }
-        
-        .altitude-display {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-top: 10px;
-            padding: 12px;
-            background: rgba(0, 20, 40, 0.5);
-            border-radius: 8px;
-            border-left: 3px solid var(--cyber-orange);
         }
         
         /* Enhanced Forecast */
@@ -711,7 +724,7 @@
                     <div class="altitude-icon">⛰️</div>
                     <div>
                         <div class="altitude-value" id="altitudeValue">--</div>
-                        <div class="altitude-unit">meters above sea level</div>
+                        <div class="altitude-unit">feet above sea level</div>
                     </div>
                 </div>
             </div>
@@ -1144,7 +1157,7 @@
                     // Set weather theme and animations
                     this.setWeatherTheme(weatherData.current.weather_code);
                     
-                    // Update UI with enhanced data
+                    // Update UI with enhanced data - FIXED: Convert meters to feet
                     this.updateUIWithEnhancedData(weatherData, cityName, elevation);
                     
                     // Update last updated time
@@ -1349,9 +1362,10 @@
                 document.getElementById('tempDisplay').textContent = `${Math.round(current.temperature_2m)}°C`;
                 document.getElementById('feelsLike').textContent = `Feels like ${Math.round(current.apparent_temperature)}°C`;
                 
-                // Elevation
+                // FIXED: Convert meters to feet for altitude
                 const altitudeMeters = elevation || weatherData.elevation || 0;
-                document.getElementById('altitudeValue').textContent = `${Math.round(altitudeMeters)}m`;
+                const altitudeFeet = Math.round(altitudeMeters * 3.28084); // Convert meters to feet
+                document.getElementById('altitudeValue').textContent = altitudeFeet.toLocaleString();
                 
                 // Sun times and day length
                 if (daily.sunrise && daily.sunrise[0]) {
